@@ -4,15 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>web study | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="web study">
+  <meta name="description" content="title: web studydate: 2016-09-08 10:32:17Title: LARAVEL STUDY OF IOCintro: 记录laravel的一些学习笔记Tags: php-laravelStatus: publicToc: yesPosition: 1
+laravel IOC控制反转废话不说直接上实例123456789101112131415161718192021">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/web-study/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:updated_time" content="2016-09-08T02:32:17.574Z">
+<meta property="og:description" content="title: web studydate: 2016-09-08 10:32:17Title: LARAVEL STUDY OF IOCintro: 记录laravel的一些学习笔记Tags: php-laravelStatus: publicToc: yesPosition: 1
+laravel IOC控制反转废话不说直接上实例123456789101112131415161718192021">
+<meta property="og:updated_time" content="2016-09-08T08:41:39.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web study">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: web studydate: 2016-09-08 10:32:17Title: LARAVEL STUDY OF IOCintro: 记录laravel的一些学习笔记Tags: php-laravelStatus: publicToc: yesPosition: 1
+laravel IOC控制反转废话不说直接上实例123456789101112131415161718192021">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -105,6 +111,8 @@
 					        
 								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 					        
+								<a class="mail" target="_blank" href="/jinjiang2009@126.com" title="mail">mail</a>
+					        
 						</div>
 					</nav>
 				</section>
@@ -112,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/php-laravel/" style="font-size: 20px;">php-laravel</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a>
 					</div>
 				</section>
 				
@@ -188,6 +196,8 @@
 			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 			        
+						<a class="mail" target="_blank" href="/jinjiang2009@126.com" title="mail">mail</a>
+			        
 				</div>
 			</nav>
 		</header>				
@@ -198,7 +208,7 @@
   
     <div class="article-meta">
       <a href="/web-study/index.html" class="article-date">
-  	<time datetime="2016-09-08T02:32:17.000Z" itemprop="datePublished">2016-09-08</time>
+  	<time datetime="2016-09-08T08:41:39.478Z" itemprop="datePublished">2016-09-08</time>
 </a>
     </div>
   
@@ -207,27 +217,17 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      web study
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <hr>
+<p>title: web study<br>date: 2016-09-08 10:32:17<br>Title: LARAVEL STUDY OF IOC<br>intro: 记录laravel的一些学习笔记<br>Tags: php-laravel<br>Status: public<br>Toc: yes<br>Position: 1</p>
+<h2 id="laravel-IOC控制反转"><a href="#laravel-IOC控制反转" class="headerlink" title="laravel IOC控制反转"></a>laravel IOC控制反转</h2><h3 id="废话不说直接上实例"><a href="#废话不说直接上实例" class="headerlink" title="废话不说直接上实例"></a>废话不说直接上实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">//laravel IOC理解以及依赖注入 DI</div><div class="line">interface SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 超能力激活方法</div><div class="line">     *</div><div class="line">     * 任何一个超能力都得有该方法，并拥有一个参数</div><div class="line">     *@param array $target 针对目标，可以是一个或多个，自己或他人</div><div class="line">     */</div><div class="line">    public function activate(array $target);</div><div class="line">&#125;</div><div class="line">class XPower implements SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    public function activate(array $target)</div><div class="line">    &#123;</div><div class="line">        // 这只是个例子。。具体自行脑补</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 终极炸弹 （就这么俗）</div><div class="line"> */</div><div class="line">class UltraBomb implements SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    public function activate(array $target)</div><div class="line">    &#123;</div><div class="line">        // 这只是个例子。。具体自行脑补</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class Superman</div><div class="line">&#123;</div><div class="line">    protected $module;</div><div class="line"></div><div class="line">    public function __construct(SuperModuleInterface $module)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;module = $module;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">class Container</div><div class="line">&#123;</div><div class="line">    public $binds;</div><div class="line"></div><div class="line">    public $instances;</div><div class="line"></div><div class="line">    public function bind($abstract, $concrete)</div><div class="line">    &#123;</div><div class="line">        if ($concrete instanceof Closure) &#123;</div><div class="line">            $this-&gt;binds[$abstract] = $concrete;</div><div class="line">        &#125; else &#123;</div><div class="line">            $this-&gt;instances[$abstract] = $concrete;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public function make($abstract, $parameters = [])</div><div class="line">    &#123;</div><div class="line">        if (isset($this-&gt;instances[$abstract])) &#123;</div><div class="line">            return $this-&gt;instances[$abstract];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        array_unshift($parameters, $this);</div><div class="line"></div><div class="line">        return call_user_func_array($this-&gt;binds[$abstract], $parameters);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 创建一个容器（后面称作超级工厂）</div><div class="line">$container = new Container;</div><div class="line"></div><div class="line">// 向该 超级工厂添加超人的生产脚本</div><div class="line">$container-&gt;bind(&apos;superman&apos;, function($container, $moduleName) &#123;</div><div class="line">    return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 向该 超级工厂添加超能力模组的生产脚本</div><div class="line">$container-&gt;bind(&apos;xpower&apos;, function($container) &#123;</div><div class="line">    return new XPower;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 同上</div><div class="line">$container-&gt;bind(&apos;ultrabomb&apos;, function($container) &#123;</div><div class="line">    return new UltraBomb;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ****************** 华丽丽的分割线 **********************</div><div class="line">// 开始启动生产</div><div class="line">$superman_1 = $container-&gt;make(&apos;superman&apos;, [&apos;xpower&apos;]);var_dump($container-&gt;binds);die;</div><div class="line">$superman_2 = $container-&gt;make(&apos;superman&apos;, [&apos;ultrabomb&apos;]);</div><div class="line">$superman_3 = $container-&gt;make(&apos;superman&apos;, [&apos;xpower&apos;]);var_dump($superman_1);die;</div><div class="line">// ...随意添加</div></pre></td></tr></table></figure>
+<p>laravel核心就是服务容器.所有的服务提供者绑定到容器中.细致的讲解可以取作者的官网进行查看<br>整个IOC的核心应该是make方法的call_user_func_array()函数的调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$container-&gt;bind(&apos;superman&apos;, function($container, $moduleName) &#123;</div><div class="line">    return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>闭包函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function($container, $moduleName) &#123;</div><div class="line">     return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>恰好给call_user_fun_array()的第一个参数使用.<br>执行完三次bind之后,$container-&gt;bind中有了三个key-&gt;value的 闭包<br>当再次执行$container-&gt;make(‘superman’,[‘xpower’])时,$container-&gt;binds中superman对应上述代码的闭包,参数为[$container,xpower]<br>执行 new Superman($container-&gt;make($moduleName))时,对应$container-&gt;make(‘xpower’);则再次走call_user_func_array()的流程,return<br> new xpower()给Superman的construst.<br> 所以IOC实质就是2次调用call_user_func_array();</p>
+<p>注:该代码引用自<a href="https://www.insp.top/article/learn-laravel-container" target="_blank" rel="external">https://www.insp.top/article/learn-laravel-container</a></p>
+<p>作者分享的干货呀,大家绝对受益.</p>
+
       
     </div>
     
@@ -263,7 +263,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="web study" data-url="http://yoursite.com/web-study/index.html"></div>
+	<div class="ds-thread" data-thread-key="undefined" data-title="" data-url="http://yoursite.com/web-study/index.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
