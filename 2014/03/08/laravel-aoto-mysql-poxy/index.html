@@ -4,14 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: php-laravel | Hexo</title>
+  <title>laravel aoto mysql-poxy | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/php-laravel/index.html">
+  <meta name="description" content="Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个12345678910111213141516171819&amp;apos;mysql&amp;apos; =&amp;gt; [            &amp;apos;read&amp;apos; =&amp;gt; [                &amp;apos;host&amp;apos; =&amp;gt;[                    &amp;apos;1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="laravel aoto mysql-poxy">
+<meta property="og:url" content="http://yoursite.com/2014/03/08/laravel-aoto-mysql-poxy/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个12345678910111213141516171819&amp;apos;mysql&amp;apos; =&amp;gt; [            &amp;apos;read&amp;apos; =&amp;gt; [                &amp;apos;host&amp;apos; =&amp;gt;[                    &amp;apos;1">
+<meta property="og:updated_time" content="2016-09-08T09:01:24.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="laravel aoto mysql-poxy">
+<meta name="twitter:description" content="Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个12345678910111213141516171819&amp;apos;mysql&amp;apos; =&amp;gt; [            &amp;apos;read&amp;apos; =&amp;gt; [                &amp;apos;host&amp;apos; =&amp;gt;[                    &amp;apos;1">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -197,94 +201,116 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-laravel-aoto-mysql-poxy" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/08/web-study/" class="archive-article-date">
-  	<time datetime="2016-06-07T16:00:00.000Z" itemprop="datePublished">Jun 8</time>
+    <div class="article-meta">
+      <a href="/2014/03/08/laravel-aoto-mysql-poxy/" class="article-date">
+  	<time datetime="2014-03-07T16:00:00.000Z" itemprop="datePublished">2014-03-08</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/web-study/">laravel IOC理解以及依赖注入 DI</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      laravel aoto mysql-poxy
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-laravel/">php-laravel</a></li></ul>
-	</div>
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
 
-          
-
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/08/php-Builder-pattern-in-laravel/" class="archive-article-date">
-  	<time datetime="2015-09-07T16:00:00.000Z" itemprop="datePublished">Sep 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/08/php-Builder-pattern-in-laravel/">php Builder pattern in laravel</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Laravel-自动实现mysql-proxy的读写分离-读库可以配置多个-写库只有一个"><a href="#Laravel-自动实现mysql-proxy的读写分离-读库可以配置多个-写库只有一个" class="headerlink" title="Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个"></a>Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&apos;mysql&apos; =&gt; [</div><div class="line">            &apos;read&apos; =&gt; [</div><div class="line">                &apos;host&apos; =&gt;[</div><div class="line">                    &apos;10.100.20.112&apos;,</div><div class="line">                    &apos;10.100.20.113&apos;,</div><div class="line">                ]</div><div class="line">            ],</div><div class="line"></div><div class="line">            &apos;write&apos; =&gt; [</div><div class="line">                &apos;host&apos; =&gt; &apos;10.100.20.111&apos;,</div><div class="line">            ],</div><div class="line">            &apos;driver&apos;    =&gt; &apos;mysql&apos;,</div><div class="line">            &apos;database&apos;  =&gt; &apos;laravel&apos;,</div><div class="line">            &apos;username&apos;  =&gt; &apos;root&apos;,</div><div class="line">            &apos;password&apos;  =&gt; &apos;111111&apos;,</div><div class="line">            &apos;charset&apos;   =&gt; &apos;utf8&apos;,</div><div class="line">            &apos;collation&apos; =&gt; &apos;utf8_unicode_ci&apos;,</div><div class="line">            &apos;prefix&apos;    =&gt; &apos;&apos;,</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="LARAVEL资源汇总"><a href="#LARAVEL资源汇总" class="headerlink" title="LARAVEL资源汇总"></a>LARAVEL资源汇总</h2><p><a href="http://laravelacademy.org/post/153.html" target="_blank" rel="external"> laravel 学院 </a></p>
+<hr>
+<p><a href="http://laravel.io/forum/" target="_blank" rel="external"> laravel 论坛 </a></p>
+<hr>
+<p><a href="http://packalyst.com/" target="_blank" rel="external"> php 各种包 </a></p>
+<hr>
+<p><a href="http://laravist.com" target="_blank" rel="external"> laravist </a></p>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-laravel/">php-laravel</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/08/LNMP环境的一些安全知识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          LNMP环境的一些安全知识
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="laravel-aoto-mysql-poxy" data-title="laravel aoto mysql-poxy" data-url="http://yoursite.com/2014/03/08/laravel-aoto-mysql-poxy/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -310,9 +336,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: /

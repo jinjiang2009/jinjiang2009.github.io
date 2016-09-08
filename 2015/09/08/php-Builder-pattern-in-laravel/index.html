@@ -4,14 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hexo</title>
+  <title>php Builder pattern in laravel | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="php Builder pattern in laravel原文地址http://learninglaravel.net/understanding-design-patterns-in-laravel/link绝对的干货呀@__@直接上代码1234567891011121314151617181920212223242526272829303132&amp;lt;?phpclass Product &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php Builder pattern in laravel">
+<meta property="og:url" content="http://yoursite.com/2015/09/08/php-Builder-pattern-in-laravel/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="php Builder pattern in laravel原文地址http://learninglaravel.net/understanding-design-patterns-in-laravel/link绝对的干货呀@__@直接上代码1234567891011121314151617181920212223242526272829303132&amp;lt;?phpclass Product &amp;#">
+<meta property="og:updated_time" content="2016-09-08T09:02:07.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="php Builder pattern in laravel">
+<meta name="twitter:description" content="php Builder pattern in laravel原文地址http://learninglaravel.net/understanding-design-patterns-in-laravel/link绝对的干货呀@__@直接上代码1234567891011121314151617181920212223242526272829303132&amp;lt;?phpclass Product &amp;#">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -197,124 +201,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-web-study" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/08/web-study/" class="article-date">
-  	<time datetime="2016-06-07T16:00:00.000Z" itemprop="datePublished">2016-06-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/08/web-study/">laravel IOC理解以及依赖注入 DI</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="laravel-IOC控制反转"><a href="#laravel-IOC控制反转" class="headerlink" title="laravel IOC控制反转"></a>laravel IOC控制反转</h2><h3 id="废话不说直接上实例"><a href="#废话不说直接上实例" class="headerlink" title="废话不说直接上实例"></a>废话不说直接上实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">//laravel IOC理解以及依赖注入 DI</div><div class="line">interface SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 超能力激活方法</div><div class="line">     *</div><div class="line">     * 任何一个超能力都得有该方法，并拥有一个参数</div><div class="line">     *@param array $target 针对目标，可以是一个或多个，自己或他人</div><div class="line">     */</div><div class="line">    public function activate(array $target);</div><div class="line">&#125;</div><div class="line">class XPower implements SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    public function activate(array $target)</div><div class="line">    &#123;</div><div class="line">        // 这只是个例子。。具体自行脑补</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 终极炸弹 （就这么俗）</div><div class="line"> */</div><div class="line">class UltraBomb implements SuperModuleInterface</div><div class="line">&#123;</div><div class="line">    public function activate(array $target)</div><div class="line">    &#123;</div><div class="line">        // 这只是个例子。。具体自行脑补</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class Superman</div><div class="line">&#123;</div><div class="line">    protected $module;</div><div class="line"></div><div class="line">    public function __construct(SuperModuleInterface $module)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;module = $module;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">class Container</div><div class="line">&#123;</div><div class="line">    public $binds;</div><div class="line"></div><div class="line">    public $instances;</div><div class="line"></div><div class="line">    public function bind($abstract, $concrete)</div><div class="line">    &#123;</div><div class="line">        if ($concrete instanceof Closure) &#123;</div><div class="line">            $this-&gt;binds[$abstract] = $concrete;</div><div class="line">        &#125; else &#123;</div><div class="line">            $this-&gt;instances[$abstract] = $concrete;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public function make($abstract, $parameters = [])</div><div class="line">    &#123;</div><div class="line">        if (isset($this-&gt;instances[$abstract])) &#123;</div><div class="line">            return $this-&gt;instances[$abstract];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        array_unshift($parameters, $this);</div><div class="line"></div><div class="line">        return call_user_func_array($this-&gt;binds[$abstract], $parameters);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 创建一个容器（后面称作超级工厂）</div><div class="line">$container = new Container;</div><div class="line"></div><div class="line">// 向该 超级工厂添加超人的生产脚本</div><div class="line">$container-&gt;bind(&apos;superman&apos;, function($container, $moduleName) &#123;</div><div class="line">    return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 向该 超级工厂添加超能力模组的生产脚本</div><div class="line">$container-&gt;bind(&apos;xpower&apos;, function($container) &#123;</div><div class="line">    return new XPower;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 同上</div><div class="line">$container-&gt;bind(&apos;ultrabomb&apos;, function($container) &#123;</div><div class="line">    return new UltraBomb;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ****************** 华丽丽的分割线 **********************</div><div class="line">// 开始启动生产</div><div class="line">$superman_1 = $container-&gt;make(&apos;superman&apos;, [&apos;xpower&apos;]);var_dump($container-&gt;binds);die;</div><div class="line">$superman_2 = $container-&gt;make(&apos;superman&apos;, [&apos;ultrabomb&apos;]);</div><div class="line">$superman_3 = $container-&gt;make(&apos;superman&apos;, [&apos;xpower&apos;]);var_dump($superman_1);die;</div><div class="line">// ...随意添加</div></pre></td></tr></table></figure>
-<p>laravel核心就是服务容器.所有的服务提供者绑定到容器中.细致的讲解可以取作者的官网进行查看<br>整个IOC的核心应该是make方法的call_user_func_array()函数的调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$container-&gt;bind(&apos;superman&apos;, function($container, $moduleName) &#123;</div><div class="line">    return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>闭包函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function($container, $moduleName) &#123;</div><div class="line">     return new Superman($container-&gt;make($moduleName));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>恰好给call_user_fun_array()的第一个参数使用.<br>执行完三次bind之后,$container-&gt;bind中有了三个key-&gt;value的 闭包<br>当再次执行$container-&gt;make(‘superman’,[‘xpower’])时,$container-&gt;binds中superman对应上述代码的闭包,参数为[$container,xpower]<br>执行 new Superman($container-&gt;make($moduleName))时,对应$container-&gt;make(‘xpower’);则再次走call_user_func_array()的流程,return<br> new xpower()给Superman的construst.<br> 所以IOC实质就是2次调用call_user_func_array();</p>
-<p>注:该代码引用自<a href="https://www.insp.top/article/learn-laravel-container" target="_blank" rel="external">https://www.insp.top/article/learn-laravel-container</a></p>
-<p>作者分享的干货呀,大家绝对受益.</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-laravel/">php-laravel</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-php-constant-hash" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/08/php-constant-hash/" class="article-date">
-  	<time datetime="2016-04-07T16:00:00.000Z" itemprop="datePublished">2016-04-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/08/php-constant-hash/">php constant hash</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="php一致性hash算法"><a href="#php一致性hash算法" class="headerlink" title="php一致性hash算法"></a>php一致性hash算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">interface hash &#123;</div><div class="line">	public function _hash($str);</div><div class="line">&#125;</div><div class="line">interface distribution &#123;</div><div class="line">	public function lookup($key);</div><div class="line">&#125;</div><div class="line">class Consistent implements hash,distribution &#123;</div><div class="line">	protected $_nodes = array();</div><div class="line">	protected $_position = array();</div><div class="line">	protected $_mul = 64; //虚拟节点的个数</div><div class="line">	public function _hash($str)</div><div class="line">	&#123;</div><div class="line">		return sprintf(&apos;%u&apos;,crc32($str));</div><div class="line">	&#125;</div><div class="line">	public function lookup($key)</div><div class="line">	&#123;</div><div class="line">		$point = $this-&gt;_hash($key); // 把字符串转换成32位数字</div><div class="line">		$node = current($this-&gt;_position);</div><div class="line">		foreach ($this-&gt;_position as $k=&gt;$v) &#123;</div><div class="line">			if ($point &lt;= $k) &#123;</div><div class="line">				$node = $v;</div><div class="line">				break;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return $node;</div><div class="line">	&#125;</div><div class="line">	public function addNode($service)</div><div class="line">	&#123;</div><div class="line">		for ($i = 0; $i &lt; $this-&gt;_mul; $i++) &#123;</div><div class="line">			$this-&gt;_position[$this-&gt;_hash($service.&apos;-&apos;.$i)] = $service;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		$this-&gt;_sortPos();</div><div class="line">	&#125;</div><div class="line">	public function delNode($node)</div><div class="line">	&#123;</div><div class="line">		foreach ($this-&gt;_position as $k =&gt; $v) &#123;</div><div class="line">			if ($v == $node) &#123;</div><div class="line">				unset($this-&gt;_position[$k]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public function _sortNode()</div><div class="line">	&#123;</div><div class="line">		ksort($this-&gt;_position,SORT_REGULAR);</div><div class="line">	&#125;</div><div class="line">	public function _sortPos()</div><div class="line">	&#123;</div><div class="line">		ksort($this-&gt;_position,SORT_REGULAR);</div><div class="line">	&#125;</div><div class="line">	public function getNodes()</div><div class="line">	&#123;</div><div class="line">		print_r($this-&gt;_nodes);</div><div class="line">	&#125;</div><div class="line">	public function getPoss()</div><div class="line">	&#123;</div><div class="line">		print_r($this-&gt;_position);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">$obj = new Consistent();</div><div class="line">$obj-&gt;addNode(&apos;a&apos;);</div><div class="line">$obj-&gt;addNode(&apos;b&apos;);</div><div class="line">$obj-&gt;addNode(&apos;c&apos;);</div><div class="line">echo $obj-&gt;lookup(&apos;name&apos;);</div><div class="line">echo &apos;所有服务器如下:&lt;br/&gt;&apos;;</div><div class="line">echo &apos;当前键的hash值为:&apos;.$obj-&gt;_hash(&apos;name&apos;).&apos;&lt;br/&gt;&apos;;</div><div class="line">$obj-&gt;getPoss();</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-php-Builder-pattern-in-laravel" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-php-Builder-pattern-in-laravel" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/09/08/php-Builder-pattern-in-laravel/" class="article-date">
@@ -330,12 +217,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/08/php-Builder-pattern-in-laravel/">php Builder pattern in laravel</a>
+    <h1 class="article-title" itemprop="name">
+      php Builder pattern in laravel
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-laravel/">php-laravel</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -358,180 +256,77 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-laravel/">php-laravel</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-LNMP环境的一些安全知识" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/05/08/LNMP环境的一些安全知识/" class="article-date">
-  	<time datetime="2014-05-08T08:58:43.000Z" itemprop="datePublished">2014-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2016/04/08/php-constant-hash/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/08/LNMP环境的一些安全知识/">LNMP环境的一些安全知识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h2><p>   Linux最低权限安全配置<br>Nginx、MySQL、PHP-FPM三者都应该是以最低权限用户组运行。<br>网站目录的文件用户组和PHP运行用户属主应该区分开, 设置PHP对网站文件只有可执行权限, 对于静态文件都交给Nginx处理。比如PHP-FPM的用户组为php-fpm:php-fpm, 网站目录www.lezhizhe.net其用户组为www:www, 文件属性为644，也就是说php合nginx在网站根目录只有读权限。对于文件上传目录和缓存目录, 可以设置777权限, 生成的文件要设置为644属性, 禁止上传的文件具有可执行权限。<br>对于PHP使用open_basedir限制虚拟主机跨目录访问(网上有说在php.ini文件中修改open_basedir, 经测试不生效)。不过可以在nginx的每个站点的con.f文件中设置PHP的open_basedir属性(注意如果在某个站点设置了该属性其它站点未设置, 会造成其它站点打不开的情况):<br>conf代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fastcgi_param  PHP_VALUE  &quot;open_basedir=$document_root:/tmp/&quot;;</div></pre></td></tr></table></figure></p>
-<h2 id="防火墙及端口配置"><a href="#防火墙及端口配置" class="headerlink" title="防火墙及端口配置"></a>防火墙及端口配置</h2><ol>
-<li>禁止SSH密码登陆方式, 采用公钥方式登陆。</li>
-<li>开启iptables。只开放必要的端口出来。iptable配置如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">*filter</div><div class="line">:INPUT ACCEPT [0:0]</div><div class="line">:FORWARD ACCEPT [0:0]</div><div class="line">:OUTPUT ACCEPT [46:7024]</div><div class="line">-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</div><div class="line">-A INPUT -p icmp -j ACCEPT</div><div class="line">-A INPUT -i lo -j ACCEPT</div><div class="line">-A INPUT -i eth1 -j ACCEPT</div><div class="line">-A INPUT -p tcp -m tcp --sport 53 -j ACCEPT //DNS端口</div><div class="line">-A INPUT -p udp -m udp --sport 53 -j ACCEPT</div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT  //HTTP端口</div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 4000 -j ACCEPT //FTP端口</div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 4355 -j ACCEPT //SSh端口</div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 30000:60000 -j ACCEPT //FTP被动模式端口</div><div class="line">-A INPUT -j REJECT --reject-with icmp-host-prohibited</div><div class="line">-A FORWARD -j REJECT --reject-with icmp-host-prohibited</div><div class="line">COMMIT</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="PHP安装配置"><a href="#PHP安装配置" class="headerlink" title="PHP安装配置"></a>PHP安装配置</h2><ol>
-<li>禁用不安全PHP函数<br>disable_functions = show_source,system,shell_exec,passthru,exec,popen,proc_open,proc_get_status,phpinfo</li>
-<li><p>关闭错误日志防止输出错误信息, 记录log方便程序调试<br>display_errors = Off<br>log_errors=On<br>error_log=/var/log/php-fpm/sie-error.log</p>
-</li>
-<li><p>关闭远程代码执行。如果启用，PHP可以通过allow_url_fopen，在file_get_contents()、include、require中获取诸如FTP或网页内容这些远程数据。如果忘记了对输入数据进行过滤，而这些函数调用了这些数据，则形成了注入漏洞。<br>allow_url_fopen=Off</p>
-</li>
-<li><p>防止PHP信息泄露, 不轻易透露自己php版本信息，防止黑客针对这个版本的php发动攻击.<br>expose_php = Off</p>
-</li>
-<li><p>禁止动态加载链接库:<br>enable_dl = Off</p>
-</li>
-<li><p>将文件上传到远程服务器, 例如nfs等。当然也可以调用你们写好的php接口。 即使有上传漏洞，那么文件也被传到了静态服务器上。木马等文件根本无法执行。</p>
-</li>
-</ol>
-<h2 id="Nginx限制访问"><a href="#Nginx限制访问" class="headerlink" title="Nginx限制访问"></a>Nginx限制访问</h2><ol>
-<li>有些目录存放的是一些类库文件或者模板文件, 不需要用户访问的，可以在该目录访问限制返回404。如lib类文件目录和template模板目录：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~ ^/(lib|template)/ &#123;</div><div class="line">return 404;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>对于静态文件(如js、css、图片等)限制通过PHP执行：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">location ~* \.(js|css|jpg|jpeg|gif|png|swf)$ &#123;</div><div class="line">if (-f $request_filename) &#123;</div><div class="line">expires 0d;</div><div class="line">break;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>对于PHP程序文件，一般都是很少的几个入口文件, 可以直接限制这几个PHP文件的执行。例如现在只有index.php、user.php、admin.php三个入口文件，那我们只把这三个PHP文件交给fast-cgi文件去执行。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ ^/(index|user|admin)\.php &#123;</div><div class="line">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">fastcgi_index index.php;</div><div class="line">fastcgi_split_path_info ^(.+\.php)(/?.+)$;</div><div class="line">fastcgi_param PATH_INFO $fastcgi_path_info;</div><div class="line">fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;</div><div class="line">fastcgi_param PHP_VALUE &quot;open_basedir=$document_root:/tmp/&quot;;</div><div class="line">include fastcgi_params;</div><div class="line">fastcgi_pass 127.0.0.1:9000;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-laravel-aoto-mysql-poxy" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/03/08/laravel-aoto-mysql-poxy/" class="article-date">
-  	<time datetime="2014-03-07T16:00:00.000Z" itemprop="datePublished">2014-03-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          php constant hash
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/08/laravel-aoto-mysql-poxy/">laravel aoto mysql-poxy</a>
-    </h1>
   
+    <a href="/2014/05/08/LNMP环境的一些安全知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LNMP环境的一些安全知识</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Laravel-自动实现mysql-proxy的读写分离-读库可以配置多个-写库只有一个"><a href="#Laravel-自动实现mysql-proxy的读写分离-读库可以配置多个-写库只有一个" class="headerlink" title="Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个"></a>Laravel 自动实现mysql-proxy的读写分离,读库可以配置多个,写库只有一个</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&apos;mysql&apos; =&gt; [</div><div class="line">            &apos;read&apos; =&gt; [</div><div class="line">                &apos;host&apos; =&gt;[</div><div class="line">                    &apos;10.100.20.112&apos;,</div><div class="line">                    &apos;10.100.20.113&apos;,</div><div class="line">                ]</div><div class="line">            ],</div><div class="line"></div><div class="line">            &apos;write&apos; =&gt; [</div><div class="line">                &apos;host&apos; =&gt; &apos;10.100.20.111&apos;,</div><div class="line">            ],</div><div class="line">            &apos;driver&apos;    =&gt; &apos;mysql&apos;,</div><div class="line">            &apos;database&apos;  =&gt; &apos;laravel&apos;,</div><div class="line">            &apos;username&apos;  =&gt; &apos;root&apos;,</div><div class="line">            &apos;password&apos;  =&gt; &apos;111111&apos;,</div><div class="line">            &apos;charset&apos;   =&gt; &apos;utf8&apos;,</div><div class="line">            &apos;collation&apos; =&gt; &apos;utf8_unicode_ci&apos;,</div><div class="line">            &apos;prefix&apos;    =&gt; &apos;&apos;,</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="LARAVEL资源汇总"><a href="#LARAVEL资源汇总" class="headerlink" title="LARAVEL资源汇总"></a>LARAVEL资源汇总</h2><p><a href="http://laravelacademy.org/post/153.html" target="_blank" rel="external"> laravel 学院 </a></p>
-<hr>
-<p><a href="http://laravel.io/forum/" target="_blank" rel="external"> laravel 论坛 </a></p>
-<hr>
-<p><a href="http://packalyst.com/" target="_blank" rel="external"> php 各种包 </a></p>
-<hr>
-<p><a href="http://laravist.com" target="_blank" rel="external"> laravist </a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
 
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="php-Builder-pattern-in-laravel" data-title="php Builder pattern in laravel" data-url="http://yoursite.com/2015/09/08/php-Builder-pattern-in-laravel/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-  
-  
+
+
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -555,8 +350,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
